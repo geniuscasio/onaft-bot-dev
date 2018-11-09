@@ -188,6 +188,7 @@ def reply_on_start(message):
     """
     bot.send_message(message.chat.id, "Hi there!")
     Postgres().initDB()
+    Postgres().log(message.chat.id, '/start')
     # # log(message)
     # db = Postgres().get_instance()
     # if not db.get_user(message.chat.id):  # Create new user if not exists
