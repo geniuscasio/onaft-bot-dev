@@ -13,7 +13,8 @@ class Postgres(object):
             cls._instance = object.__new__(cls)
             try:
                 print('connecting to DataBase...')
-                connection = Postgres._instance.connection = postgresql.open('pq://hcfcpbwgurxffq:69e59829d03669d494a38b331392be50f2b5cdf64b5b8a57fb944e9f6c72e3dd@ec2-54-247-187-134.eu-west-1.compute.amazonaws.com:5432/dct9vhkq2958a1')
+                connection = Postgres._instance.connection = postgresql.open(
+                    getDBCredentials())
             except Exception as error:
                 print('Error: connection not established {}'.format(error))
                 Postgres._instance = None
