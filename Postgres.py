@@ -14,7 +14,7 @@ class Postgres(object):
             try:
                 print('connecting to DataBase...')
                 connection = Postgres._instance.connection = postgresql.open(
-                    getDBCredentials())
+                    config.getDBCredentials())
             except Exception as error:
                 print('Error: connection not established {}'.format(error))
                 Postgres._instance = None
