@@ -184,15 +184,15 @@ def reply_on_start(message):
     """
     Reply on /start command
     """
-    # log(message)
-    db = Postgres().get_instance()
-    if not db.get_user(message.chat.id):  # Create new user if not exists
-        db.add_user(message.chat.id)
-        print('[Info] New user was created ' +
-              str(db.get_user(message.chat.id)))
+    bot.send_message(message.chat.id, "Hi there!")
+    # # log(message)
+    # db = Postgres().get_instance()
+    # if not db.get_user(message.chat.id):  # Create new user if not exists
+    #     db.add_user(message.chat.id)
+    #     print('[Info] New user was created ' +
+    #           str(db.get_user(message.chat.id)))
     
-    reply_on_get_facks(message)
-
+    # reply_on_get_facks(message)
 
 @bot.message_handler(func=lambda m: m.text in REQUEST_TODAY or m.text in REQUEST_TOMORROW)
 def reply_on_today_tomorrow(message):
