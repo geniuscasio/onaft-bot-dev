@@ -18,7 +18,9 @@ week_days = ['Понедельник', 'Вторник', 'Среда', 'Четв
 
 WEBHOOK_URL = "https://onaft-bot-dev.herokuapp.com/bot"
 
+print(config.getTelegramToken())
 bot = telebot.TeleBot(config.getTelegramToken())
+print(bot.get_me())
 server = Flask(__name__)
 
 REQUEST_TODAY           = ['На сегодня', 'today']
