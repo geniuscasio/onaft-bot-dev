@@ -11,16 +11,10 @@ class Postgres(object):
     def __new__(cls):
         if cls._instance is None:
             cls._instance = object.__new__(cls)
-            try:
-                print('connecting to DataBase...')
-                print(config.getDBCredentials())
-                connection = Postgres._instance.connection = postgresql.open(
-                    config.getDBCredentials())
-            except Exception as error:
-                print('Error: connection not established {}'.format(error))
-                Postgres._instance = None
-            else:
-                print('succesfull established connection!')
+            print('connecting to DataBase...')
+            print(config.getDBCredentials() )
+            connection = Postgres._instance.connection = postgresql.open(
+                config.getDBCredentials())
         return cls._instance
     
     def __init__(self):
