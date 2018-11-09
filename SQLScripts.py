@@ -11,7 +11,7 @@ CREATE_GROUPS = """
         CREATE TABLE IF NOT EXISTS T_GROUPS (
             ID SERIAL PRIMARY KEY,
             NAME TEXT,
-            FACULTY_ID NUMBER,
+            FACULTY_ID INTEGER,
             FOREIGN KEY (FACULTY_ID) REFERENCES T_FACULTIES (ID)
         );
     """
@@ -21,7 +21,7 @@ CREATE_USERS = """
             ID SERIAL PRIMARY KEY,
             TELEGRAM_ID TEXT,
             TELEPHONE TEXT,
-            GROUP_ID NUMBER,
+            GROUP_ID INTEGER,
             FOREIGN KEY (GROUP_ID) REFERENCES T_GROUPS (ID)
         );
     """
@@ -29,7 +29,7 @@ CREATE_USERS = """
 CREATE_SCHEDULE = """
         CREATE TABLE IF NOT EXISTS T_SCHEDULES (
             ID SERIAL PRIMARY KEY
-            GROUP_ID NUMBER,
+            GROUP_ID INTEGER,
             DATA TEXT,
             DATE TIMESTAMPTZ NOT NULL DEFAULT NOW(),
             FOREIGN KEY (GROUP_ID) REFERENCES T_GROUPS (ID)
