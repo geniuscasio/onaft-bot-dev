@@ -13,6 +13,7 @@ class Postgres(object):
             cls._instance = object.__new__(cls)
             try:
                 print('connecting to DataBase...')
+                print(config.getDBCredentials())
                 connection = Postgres._instance.connection = postgresql.open(
                     config.getDBCredentials())
             except Exception as error:
