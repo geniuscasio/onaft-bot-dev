@@ -1,0 +1,51 @@
+# this init scripts can be replaced any time
+
+CREATE_FACULTIES = """
+        CREATE TABLE IF NOT EXISTS T_FACULTIES (
+            ID SERIAL PRIMARY KEY,
+            NAME TEXT
+        );
+    """
+
+CREATE_GROUPS = """
+        CREATE TABLE IF NOT EXISTS T_GROUPS (
+            ID SERIAL PRIMARY KEY,
+            NAME TEXT,
+            FACULTY_ID NUMBER,
+            FOREIGN KEY (FACULTY_ID) REFERENCES T_FACULTIES (ID)
+        );
+    """
+
+CREATE_USERS = """
+        CREATE TABLE IF NOT EXISTS T_USERS (
+            ID SERIAL PRIMARY KEY,
+            TELEGRAM_ID TEXT,
+            TELEPHONE TEXT,
+            GROUP_ID NUMBER,
+            FOREIGN KEY (GROUP_ID) REFERENCES T_GROUPS (ID)
+        );
+    """
+
+CREATE_SCHEDULE = """
+        CREATE TABLE IF NOT EXISTS T_SCHEDULES (
+            ID SERIAL PRIMARY KEY
+            GROUP_ID NUMBER,
+            DATA TEXT,
+            DATE TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+            FOREIGN KEY (GROUP_ID) REFERENCES T_GROUPS (ID)
+        );
+    """
+
+CREATE_USERS_LOG = """
+        CREATE TABLE IF NOT EXISTS USERS_LOG (
+        ID SERIAL PRIMARY KEY,
+        TELEGRAM_ID TEXT,
+        MESSAGE TEXT,
+        DATE TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+        FOREIGN KEY (USER_ID) REFERENCES T_USERS (ID)
+    );
+    """
+
+init_scripts = [CREATE_FACULTIES, CREATE_GROUPS,
+                CREATE_USERS, CREATE_USERS_LOG]
+
