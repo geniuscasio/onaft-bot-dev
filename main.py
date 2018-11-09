@@ -174,7 +174,7 @@ def reply_on_get_facks(message):
         )
         for faculty in facultiesList:
             keyboard.add(types.KeyboardButton(faculty[0]))
-
+ 
         bot.send_message(
             message.chat.id,
             ANSWER_CHOOSE_FACULTY,
