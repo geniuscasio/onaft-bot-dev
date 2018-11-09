@@ -16,7 +16,7 @@ from telebot import types
 # seems like heroku does not support it
 week_days = ['Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота', 'Воскресенье']
 
-WEBHOOK_URL = "https://onaft-bot.herokuapp.com/bot"
+WEBHOOK_URL = "https://onaft-bot-dev.herokuapp.com/bot"
 
 bot = telebot.TeleBot(config.getTelegramToken())
 server = Flask(__name__)
